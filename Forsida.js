@@ -67,6 +67,36 @@ Forsida = (function() {
   // content.addEventListener('click', ); // fallið sem ræsir queryselector
   }
 
+  getDate(x) {
+    let d = (Date.now() - x) / 1000;
+    const years = Math.floor(d / (365 * 24 * 60 * 60));
+    d %= (365 * 24 * 60 * 60);
+    const months = Math.floor(d / (30 * 24 * 60 * 60));
+    d %= (30 * 24 * 60 * 60);
+    const weeks = Math.floor(d / (7 * 24 * 60 * 60));
+    d %= (7 * 24 * 60 * 60);
+    const days = Math.floor(d / (24 * 60 * 60));
+    d %= (24 * 60 * 60);
+    const hours = Math.floor(d / (60 * 60));
+    d %= (60 * 60);
+
+    if(years > 1){
+      return 'Fyrir ${years} árum';
+    }
+    if(months > 1){
+      return 'Fyrir ${months} mánuðum';
+    }
+    if(weeks > 1){
+      return 'Fyrir ${weeks} vikum';
+    }
+    if(days > 1){
+      return 'Fyrir ${days} dögum';
+    }
+    if(hours > 1){
+      return 'Fyrir ${hours} klukkutímum';
+    }
+  }
+
   return {
     init: init
   }
