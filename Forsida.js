@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const content = document.querySelector('.content');
   // const Forsida = new Forsida();
 
-  Forsida.init();
+  Forsida.init(content);
 });
 
 function fetchJSON() {
@@ -30,10 +30,41 @@ function fetchJSON() {
 
 Forsida = (function() {
 
-  function init() {
+  let Sida;
 
+  function createVideos (data) {
+    const flokkar = data.categories;
+    const myndb = data.videos;
 
-  // form.addEventListener('click', );
+    for(let i = 0; flokkar.length; i++) {
+      const flokkur = flokkur[i];
+      const elem = createDiv(flokkur, myndb);
+    }
+      // const elem = createDiv(flokkur, myndb);
+  }
+
+  function createDiv(flokkur, myndb) {
+    const divFlokkur = document.createElement('Div');
+    const Titill = document.createElement('H3');
+
+    Titill.createTextNode(flokkur.title);
+    divFlokkur.appendChild(Titill);
+
+    for(let i = 0; i <= flokkur.videos.length; i++) {
+      const id = flokkur.videos[i];
+      const video = myndb.find (v => v.id === id);
+      const elem = createVideo(video);
+    }
+  }
+
+  function createVideo(video) {
+    const divVideo = document.createElement('Div');
+  }
+
+  function init(content) {
+    Sida = content;
+
+  // content.addEventListener('click', ); // fallið sem ræsir queryselector
   }
 
   return {
