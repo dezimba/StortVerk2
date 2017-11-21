@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function fetchJSON() {
-  //const videos = ('videos.json');
+  const videos = ('videos.json');
   const request = new XMLHttpRequest();
   request.overrideMimeType("application/json");
   request.open('GET', 'videos.json', true);
@@ -15,7 +15,8 @@ function fetchJSON() {
   request.onload = function () {
     if (request.status >= 200 && request.status < 400) {
       const data = JSON.parse(request.response);
-      console.log(data);
+
+      show(data.results[0]);
     } else if (request.status > 400) {
       // villu melding
     }
