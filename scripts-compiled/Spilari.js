@@ -19,4 +19,60 @@ var Spilari = function () {
     init: init
   };
 }();
+
+Spilari.js;
+// class Player {
+
+// constructor - smiður
+/*
+* inniheldur breytur sem eru upphafsstilltar
+* byrja á this.******
+* id/url/videos/categories
+* isPlaying/Mute
+* Allir takkar með doc.querySelector
+* -play/mute/fulllscreen/forward/bakwards/vidContainer
+* addEvent listener á alla takka
+*/
+
+// showLoad() - sýnir load skilaboð
+
+// hideLoad()
+
+// showError(e) - villuskilaboð
+
+// loadHTML() - fall þar sem hlaðið er myndbandi 
+/*
+* Byrjum á að upphafsstilla breytur
+* const header/img/source/wrapper
+*/
+
+// create header - Býr til fyrirsögn 
+/*const header/headerNode
+ * sækjum svo header/headerNode
+ */
+//create videoImg
+/*
+*
+*/
+//createplayOverlay
+
+//preparePlayer()
+
+//load()
+
+//play()
+
+//mute()
+
+//fullscreen() {
+// this.video.webkitRequestFullScreen();
+//}
+
+//forward() {
+//this.video.currentTime = this.video,currentTime + 3;
+//}
+
+//backward() {
+//this.video.currentTime = this.video,currentTime - 3;
+//}
 //# sourceMappingURL=Spilari.js.map
