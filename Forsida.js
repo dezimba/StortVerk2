@@ -67,7 +67,7 @@ Forsida = (function() {
   // content.addEventListener('click', ); // fallið sem ræsir queryselector
   }
 
-  getDate(x) {
+  function getDate(x) {
     let d = (Date.now() - x) / 1000;
     const years = Math.floor(d / (365 * 24 * 60 * 60));
     d %= (365 * 24 * 60 * 60);
