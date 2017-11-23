@@ -80,6 +80,7 @@ Forsida = (function() {
     const hours = Math.floor(d / (60 * 60));
     d %= (60 * 60);
 
+    //Bæta við eintölu.. krafa um það
     if(years > 1){
       return 'Fyrir ${years} árum';
     }
