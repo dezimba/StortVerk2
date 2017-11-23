@@ -1,68 +1,53 @@
-document.addEventListener('DOMContentLoaded', () => {
-  fetchJSON();
-  const content = document.querySelector('.content');
-  // const Forsida = new Forsida();
+class Forsida {
 
-  Forsida.init(content);
-});
+  constructor() {
+    this.Sida = document.querySelector('.content');
+  }
 
-function fetchJSON() {
-  //const videos = ('videos.json');
-  const request = new XMLHttpRequest();
-  request.overrideMimeType("application/json");
-  request.open('GET', 'videos.json', true);
-  console.log(request);
-  request.onload = function () {
-    if (request.status >= 200 && request.status < 400) {
-      const data = JSON.parse(request.response);
-      console.log(data);
-    } else if (request.status > 400) {
-      // villu melding
-    }
-  };
-
-  request.onerror = function() {
-
-  };
-
-  request.send();
-}
-
-Forsida = (function() {
-
-  let Sida;
-
-  function createVideos (data) {
+  createVideos(data) {
     const flokkar = data.categories;
     const myndb = data.videos;
 
-    for(let i = 0; flokkar.length; i++) {
-      const flokkur = flokkur[i];
-      const elem = createDiv(flokkur, myndb);
+    for (let i = 0; i < flokkar.length; i++) {
+      const flokkur = flokkar[i];
+      const elem = this.createDiv(flokkur, myndb);
+      console.log("prentai");
+      this.Sida.appendChild(document.createTextNode(flokkur[i]));
     }
       // const elem = createDiv(flokkur, myndb);
   }
 
-  function createDiv(flokkur, myndb) {
+  createDiv(flokkur, myndb) {
     const divFlokkur = document.createElement('Div');
     const Titill = document.createElement('H3');
+    const t = flokkur.title;
+    const title = document.createTextNode(t);
 
-    Titill.createTextNode(flokkur.title);
+    Titill.appendChild(title);
     divFlokkur.appendChild(Titill);
 
-    for(let i = 0; i <= flokkur.videos.length; i++) {
+    for(let i = 0; i < flokkur.videos.length; i++) {
       const id = flokkur.videos[i];
       const video = myndb.find (v => v.id === id);
-      const elem = createVideo(video);
+      const elem = this.createVideo(video);
     }
   }
 
-  function createVideo(video) {
+  createVideo(video) {
+    const divContain = document.createElement('Div');
     const divVideo = document.createElement('Div');
+    const divinfo = document.createElement('Div');
+
+    const img = document.createElement('img');
+    img.src = video.poster;
+
+    divVideo.appendChild(img);
+    divContain.appendChild(divVideo);
+    divFlokkur.appendChild(divContain);
   }
 
-  function init(content) {
-    Sida = content;
+  init(content) {
+    this.Sida = content;
 
   // content.addEventListener('click', ); // fallið sem ræsir queryselector
   }
@@ -97,7 +82,38 @@ Forsida = (function() {
     }
   }
 
-  return {
-    init: init
+  fetchJSON() {
+    //const videos = ('videos.json');
+    const request = new XMLHttpRequest();
+    request.overrideMimeType('application/json');
+    request.open('GET', 'videos.json', true);
+    console.log(request);
+    request.onload = ( ) => {
+      if (request.status >= 200 && request.status < 400) {
+        const data = JSON.parse(request.response);
+        console.log(data);
+        this.createVideos(data);
+      } else if (request.status >= 400) {
+        // villu melding
+      }
+    }
+
+    request.onerror = function() {
+
+    }
+
+    request.send();
   }
-})();
+
+/*  return {
+    init
+  }  */
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const content = document.querySelector('.content');
+  const forsida = new Forsida();
+
+  forsida.init(content);
+  forsida.fetchJSON();
+});
