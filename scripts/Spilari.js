@@ -1,85 +1,105 @@
-document.addEventListener('DOMContentLoaded', function () {
-  var form = document.querySelector('form'); // Breyta querySelector
+/*
+*var Spilaris = (function() {
+*
+*  function init() {
+*    nr = form.querySelector('#number');
+*    texti = results;
+*
+*    form.addEventListener('submit', findCar);
+*  }
+*
+*  return {
+*    init: init
+*  }
+*})();
+*/
 
-  Spilari.init();
-});
-
-var Spilari = (function() {
-  
-  function init() {
-    nr = form.querySelector('#number');
-    texti = results;
-
-    form.addEventListener('submit', findCar);
-  }
-
-  return {
-    init: init
-  }
-})();
-
-
-Spilari.js
-// class Player {
-
+class Spilari {
 /*
 * í smiðnum upphafsstillum við breytur
 * búum til takka og bætum við eventListener
 */
-// constructor - smiður
-/*
-* inniheldur breytur sem eru upphafsstilltar
-* byrja á this.******
-* id/url/videos/categories
-* isPlaying/Mute
-* Allir takkar með doc.querySelector
-* -play/mute/fulllscreen/forward/bakwards/vidContainer
-* addEvent listener á alla takka
-*/
+  constructor() { // smiður
+  // Upphafstilum breytur
+    this.id = " ";
+    this.url = ;
+    this.videos = ;
+    this.categories = ;
 
-/* Takkar
-* this.document.querySelector(play)
-*
-*/
+    this.isPlaying() ;
+    this.mute() ;
 
-// showLoad() - sýnir load skilaboð
+  // upphafstillum takka
+    this.play = document.querySelector('play');
+    this.mute = document.querySelector('mute');
+    this.fullscreen = document.querySelector('fullscreen');
+    this.forward = document.querySelector('forward');
+    this.backwards = document.querySelector('backwards');
+    this.container = document.querySelector('vidContainer')
 
-// hideLoad()
+  // Bætum við eventListener á alla takkana
+    this.play.addEventListener();
+    this.mute.addEventListener();
+    this.fullscreen.addEventListener();
+    this.forward.addEventListener();
+    this.backwards.addEventlistener();
+    this.container.addEventListener();
+  }
+// sýnir load skilaboð
+  showLoad() {
+  }
 
-// showError(e) - villuskilaboð
+// Felur load skilaboð
+  hideLoad() {
+  }
 
-// loadHTML() - fall þar sem hlaðið er myndbandi 
+// villuskilaboð
+  showError(e) {
+  }
+
+// loadHTML() - fall þar sem hlaðið er myndbandi
 /*
 * Byrjum á að upphafsstilla breytur
 * const header/img/source/wrapper
 */
 
-// create header - Býr til fyrirsögn 
-/*const header/headerNode
+// create header - Býr til fyrirsögn
+/* const header/headerNode
  * sækjum svo header/headerNode
  */
-//create videoImg
+// create videoImg
 /*
 *
 */
-//createplayOverlay
+// createplayOverlay
 
-//preparePlayer()
+// preparePlayer()
 
-//load()
+// load()
 
-//play()
+// play()
 
-//mute()
+// mute()
 
-//fullscreen() {
-  // this.video.webkitRequestFullScreen();
-//}
+// Virkni á fullscreen takkann
+  fullscreen() {
+  this.video.webkitRequestFullScreen();
+  }
 
-//forward() {
-  //this.video.currentTime = this.video,currentTime + 3;
-//}
+// Virkni á 'spóla áfram takkann'
+  forward() {
+  this.video.currentTime = this.video,currentTime + 3;
+  }
 
-//backward() {
-  //this.video.currentTime = this.video,currentTime - 3;
-//}
+// Virkni á 'spóla afturábak takkann'
+  backward() {
+  this.video.currentTime = this.video,currentTime - 3;
+   }
+
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+  var form = document.querySelector('form'); // Breyta querySelector
+
+  Spilari.init();
+});
