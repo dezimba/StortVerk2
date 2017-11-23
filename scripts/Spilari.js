@@ -22,6 +22,10 @@ var Spilari = (function() {
 Spilari.js
 // class Player {
 
+/*
+* í smiðnum upphafsstillum við breytur
+* búum til takka og bætum við eventListener
+*/
 // constructor - smiður
 /*
 * inniheldur breytur sem eru upphafsstilltar
@@ -31,6 +35,11 @@ Spilari.js
 * Allir takkar með doc.querySelector
 * -play/mute/fulllscreen/forward/bakwards/vidContainer
 * addEvent listener á alla takka
+*/
+
+/* Takkar
+* this.document.querySelector(play)
+*
 */
 
 // showLoad() - sýnir load skilaboð
