@@ -21,65 +21,106 @@ class Spilari {
 */
   constructor() { // smiður
   // Upphafstilum breytur
-    this.id = " ";
-    this.url = ;
-    this.videos = ;
-    this.categories = ;
+    this.id = null;
+    this.url = ;//videos.json;
+    this.videos = null;
+    this.categories = null;
 
-    this.isPlaying() ;
-    this.mute() ;
+    this.isPlaying = false;
+    this.ismute = false;
 
   // upphafstillum takka
-    this.play = document.querySelector('play');
-    this.mute = document.querySelector('mute');
-    this.fullscreen = document.querySelector('fullscreen');
-    this.forward = document.querySelector('forward');
-    this.backwards = document.querySelector('backwards');
-    this.container = document.querySelector('vidContainer')
+    this.playTakki = document.querySelector('.playTakki');
+    this.muteTakki = document.querySelector('.muteTakki');
+    this.fullscreenTakki = document.querySelector('.fullscreenTakki');
+    this.forwardTakki = document.querySelector('.forwardTakki');
+    this.backwardsTakki = document.querySelector('.backwardsTakki');
+    this.container = document.querySelector('.vidContainer')
 
   // Bætum við eventListener á alla takkana
-    this.play.addEventListener();
-    this.mute.addEventListener();
-    this.fullscreen.addEventListener();
-    this.forward.addEventListener();
-    this.backwards.addEventlistener();
-    this.container.addEventListener();
+    this.playTakki.addEventListener('click', this.play.bind(this));
+    this.muteTakki.addEventListener('click', this.mute.bind(this));
+    this.fullscreenTakki.addEventListener('click', this.fullscreen.bind(this));
+    this.forwardTakki.addEventListener('click', this.forward.bind(this));
+    this.backwardsTakki.addEventlistener('click', this.backward.bind(this));
   }
-// sýnir load skilaboð
+
+/*
+* ATH það má aleg breyta nöfnum á föllum og breyta uppröðun.
+* Á pottþétt eftir að breytast þegar við komum Forsida.js til að virka
+*/
+
+
+/*
+* Sýnir skilaboð þegar verið er að hlaða niður gögnum
+*/
   showLoad() {
+
   }
 
-// Felur load skilaboð
+/*
+* Felur sömu skilaboð
+*/
   hideLoad() {
+
   }
 
-// villuskilaboð
+/*
+* Sýnir villuskilaboð
+* Birtir villuskilaboð sem koma fram í Forsida.js
+* 
+*/
   showError(e) {
+
   }
 
-// loadHTML() - fall þar sem hlaðið er myndbandi
 /*
-* Byrjum á að upphafsstilla breytur
-* const header/img/source/wrapper
+* Smíðum HTML sem er útlit spilarans
+* Hlöðum inn const(header/img/source) úr þeirra fylkjum.
+* Búum svo til header
+* Gerum videoImg undir, sem er .poster úr videos.json
+* Gerum "playOverlay" þegar playtakki kemur yfir mynband
 */
+  loadHTML() {
 
-// create header - Býr til fyrirsögn
-/* const header/headerNode
- * sækjum svo header/headerNode
- */
-// create videoImg
+  }
+
 /*
-*
+* Undirbýr spilara fyrir spilun
 */
-// createplayOverlay
+  preparePlayer() {
 
-// preparePlayer()
+  }
 
-// load()
+/*
+* fall þar sem við hlöðum inn myndbandi
+* þurfum að nota JSON til að sækja gögn
+* græja villur fyrir 200/400
+* 
+*/
+  load() {
 
-// play()
+  }
 
-// mute()
+/*
+* Athugum hvort sé verið að spila myndband
+* ef verið er að spila myndband birtum við pause takka/img
+* ef það er ekki verið að spila þá birtum við
+* spila takka/img
+*/
+  play() {
+
+  }
+
+/*
+* Gerum mute takkann
+* gerum hann virkann og "breytum" img.
+* Ef mute = false -> sýnum mute takka/img
+* Ef mute = true -> sýnum unmute takka/img
+*/
+  mute() {
+
+  }
 
 // Virkni á fullscreen takkann
   fullscreen() {
@@ -98,8 +139,13 @@ class Spilari {
 
 }
 
-document.addEventListener('DOMContentLoaded', function () {
-  var form = document.querySelector('form'); // Breyta querySelector
+function onVideo() {
+  return document.getElementById() != null;
+}
 
-  Spilari.init();
+document.addEventListener('DOMContentLoaded', () => {
+  if () {
+    const p = new Player();
+    p.load();
+  }
 });
