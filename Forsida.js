@@ -52,7 +52,7 @@ class Forsida {
   // content.addEventListener('click', ); // fallið sem ræsir queryselector
   }
 
-  function getDate(x) {
+   getDate(x) {
     let d = (Date.now() - x) / 1000;
     const years = Math.floor(d / (365 * 24 * 60 * 60));
     d %= (365 * 24 * 60 * 60);
@@ -67,20 +67,41 @@ class Forsida {
 
     //Bæta við eintölu.. krafa um það
     if(years > 1){
+      if(this.lastNumber(years) === 1){
+        return 'Fyrir ${years} ári'
+      }
       return 'Fyrir ${years} árum';
     }
     if(months > 1){
+      if(this.lastNumber(months) === 1){
+        return 'Fyrir ${months} mánuði'
+      }
       return 'Fyrir ${months} mánuðum';
     }
     if(weeks > 1){
+      if(this.lastNumber(weeks) === 1){
+        return 'Fyrir ${weeks} viku'
+      }
       return 'Fyrir ${weeks} vikum';
     }
     if(days > 1){
+      if(this.lastNumber(days) === 1){
+        return 'Fyrir ${days} degi'
+      }
       return 'Fyrir ${days} dögum';
     }
     if(hours > 1){
+      if(this.lastNumber(hours) === 1){
+        return 'Fyrir ${hours} klukkutíma'
+      }
       return 'Fyrir ${hours} klukkutímum';
     }
+  }
+
+  lastNumber(x){
+    let str = x.toString();
+    str = str.slice(-1);
+    return parseInt(str, 10);
   }
 
   fetchJSON() {
