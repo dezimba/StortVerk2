@@ -21,7 +21,7 @@ var Forsida = function () {
       for (var i = 0; i < flokkar.length; i++) {
         var flokkur = flokkar[i];
         var elem = this.createDiv(flokkur, myndb);
-        console.log("prentai");
+        console.log("prenta");
         this.Sida.appendChild(document.createTextNode(flokkur[i]));
       }
       // const elem = createDiv(flokkur, myndb);
