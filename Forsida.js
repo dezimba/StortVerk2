@@ -1,25 +1,24 @@
 class Forsida {
-
   constructor() {
     this.Sida = document.querySelector('.content');
-    //this.videos = null;
+    // this.videos = null;
+    this.divFlokkur = null;
   }
 
   createVideos(data) {
     const flokkar = data.categories;
     const myndb = data.videos;
 
-    for (let i = 0; i < flokkar.length; i++) {
+    for (let i = 0; i < flokkar.length; i += 1) {
       const flokkur = flokkar[i];
       const elem = this.createDiv(flokkur, myndb);
-      console.log("prenta");
-      this.Sida.appendChild(document.createTextNode(flokkur[i]));
+      console.log('prenta');
     }
-      // const elem = createDiv(flokkur, myndb);
+  // const elem = createDiv(flokkur, myndb);
   }
 
   createDiv(flokkur, myndb) {
-    const divFlokkur = document.createElement('Div');
+    const divFlokkur = document.createElement('div');
     const Titill = document.createElement('H3');
     const t = flokkur.title;
     console.log(flokkur.title);
@@ -27,27 +26,38 @@ class Forsida {
 
     Titill.appendChild(title);
     divFlokkur.appendChild(Titill);
+    this.Sida.appendChild(divFlokkur);
 
-    for(let i = 0; i < flokkur.videos.length; i++) {
+    for (let i = 0; i < flokkur.videos.length; i += 1) {
       const id = flokkur.videos[i];
-      const video = myndb.find (v => v.id === id);
-  //    const elem = this.createVideo(video);
-      console.log("prenta2");
+      const video = myndb.find(v => v.id === id);
+      // const elem = this.createVideo(video);
+      console.log('prenta2');
     }
   }
 
-/*  createVideo(video) {
-    const divContain = document.createElement('Div');
-    const divVideo = document.createElement('Div');
-    const divinfo = document.createElement('Div');
+  createVideo(video, id) {
+    const divContain = document.createElement('div');
+    const divVideo = document.createElement('div');
+    const divInfo = document.createElement('div');
 
     const img = document.createElement('img');
-    img.src = video.poster;
+    img.src = this.video[id].poster;
+
+    const Date = this.getDate(video.created);
+    console.log(Date);
+
+    const title = document.createElement('H4');
+    const t = document.createTextNode(video.title);
+    title.appendChild(t);
+    divInfo.appendChild(title);
+
+    console.log(video.title);
 
     divVideo.appendChild(img);
     divContain.appendChild(divVideo);
-    divFlokkur.appendChild(divContain);
-  }*/
+    this.divFlokkur.appendChild(divContain);
+  }
 
   init(content) {
     this.Sida = content;
@@ -55,7 +65,7 @@ class Forsida {
   // content.addEventListener('click', ); // fallið sem ræsir queryselector
   }
 
-   getDate(x) {
+  getDate(x) {
     let d = (Date.now() - x) / 1000;
     const years = Math.floor(d / (365 * 24 * 60 * 60));
     d %= (365 * 24 * 60 * 60);
@@ -68,52 +78,50 @@ class Forsida {
     const hours = Math.floor(d / (60 * 60));
     d %= (60 * 60);
 
-    //Bæta við eintölu.. krafa um það
-    if(years > 1){
-      if(this.lastNumber(years) === 1){
-        return 'Fyrir ${years} ári'
+    // Bæta við eintölu.. krafa um það
+    if (years > 1) {
+      if (this.lastNumber(years) === 1) {
+        return `Fyrir ${years} ári`;
       }
-      return 'Fyrir ${years} árum';
+      return `Fyrir ${years} árum`;
     }
-    if(months > 1){
-      if(this.lastNumber(months) === 1){
-        return 'Fyrir ${months} mánuði'
+    if (months > 1) {
+      if (this.lastNumber(months) === 1) {
+        return `Fyrir ${months} mánuði`;
       }
-      return 'Fyrir ${months} mánuðum';
+      return `Fyrir ${months} mánuðum`;
     }
-    if(weeks > 1){
-      if(this.lastNumber(weeks) === 1){
-        return 'Fyrir ${weeks} viku'
+    if (weeks > 1) {
+      if (this.lastNumber(weeks) === 1) {
+        return `Fyrir ${weeks} viku`;
       }
-      return 'Fyrir ${weeks} vikum';
+      return `Fyrir ${weeks} vikum`;
     }
-    if(days > 1){
-      if(this.lastNumber(days) === 1){
-        return 'Fyrir ${days} degi'
+    if (days > 1) {
+      if (this.lastNumber(days) === 1) {
+        return `Fyrir ${days} degi`;
       }
-      return 'Fyrir ${days} dögum';
+      return `Fyrir ${days} dögum`;
     }
-    if(hours > 1){
-      if(this.lastNumber(hours) === 1){
-        return 'Fyrir ${hours} klukkutíma'
-      }
-      return 'Fyrir ${hours} klukkutímum';
+    if (this.lastNumber(hours) === 1) {
+      return `Fyrir ${hours} klukkutíma`;
     }
+    return `Fyrir ${hours} klukkutímum`;
   }
 
-  lastNumber(x){
+  lastNumber(x) {
     let str = x.toString();
     str = str.slice(-1);
     return parseInt(str, 10);
   }
 
   fetchJSON() {
-    //const videos = ('videos.json');
+    // const videos = ('videos.json');
     const request = new XMLHttpRequest();
     request.overrideMimeType('application/json');
     request.open('GET', 'videos.json', true);
     console.log(request);
-    request.onload = ( ) => {
+    request.onload = () => {
       if (request.status >= 200 && request.status < 400) {
         const data = JSON.parse(request.response);
         console.log(data);
@@ -121,18 +129,14 @@ class Forsida {
       } else if (request.status >= 400) {
         // villu melding
       }
-    }
+    };
 
-    request.onerror = function() {
+    request.onerror = () => {
 
-    }
+    };
 
     request.send();
   }
-
-/*  return {
-    init
-  }  */
 }
 
 document.addEventListener('DOMContentLoaded', () => {
