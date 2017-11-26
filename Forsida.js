@@ -36,17 +36,10 @@ class Forsida {
     }
   }
 
-<<<<<<< HEAD
-  createVideo(video) {
-    const divContain = document.createElement('Div');
-    const divVideo = document.createElement('Div');
-    const divinfo = document.createElement('Div');
-=======
   createVideo(video, id) {
     const divContain = document.createElement('div');
     const divVideo = document.createElement('div');
     const divInfo = document.createElement('div');
->>>>>>> c02809b26d8e0d14c5c5fee0c2d5db4ab009fc8a
 
     const img = document.createElement('img');
     img.src = this.video[id].poster;
@@ -63,11 +56,7 @@ class Forsida {
 
     divVideo.appendChild(img);
     divContain.appendChild(divVideo);
-<<<<<<< HEAD
-    divFlokkur.appendChild(divContain);
-=======
     this.divFlokkur.appendChild(divContain);
->>>>>>> c02809b26d8e0d14c5c5fee0c2d5db4ab009fc8a
   }
 
   init(content) {
@@ -89,16 +78,11 @@ class Forsida {
     const hours = Math.floor(d / (60 * 60));
     d %= (60 * 60);
 
-<<<<<<< HEAD
-    if(years > 1){
-      if(this.lastNumber(years) === 1){
-        return 'Fyrir ${years} ári'
-=======
+
     // Bæta við eintölu.. krafa um það
     if (years > 1) {
       if (this.lastNumber(years) === 1) {
         return `Fyrir ${years} ári`;
->>>>>>> c02809b26d8e0d14c5c5fee0c2d5db4ab009fc8a
       }
       return `Fyrir ${years} árum`;
     }
@@ -120,17 +104,10 @@ class Forsida {
       }
       return `Fyrir ${days} dögum`;
     }
-<<<<<<< HEAD
-    if(this.lastNumber(hours) === 1){
-      return 'Fyrir ${hours} klukkutíma'
-      }
-     return 'Fyrir ${hours} klukkutímum';
-=======
     if (this.lastNumber(hours) === 1) {
       return `Fyrir ${hours} klukkutíma`;
     }
     return `Fyrir ${hours} klukkutímum`;
->>>>>>> c02809b26d8e0d14c5c5fee0c2d5db4ab009fc8a
   }
 
   lastNumber(x) {
