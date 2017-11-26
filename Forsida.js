@@ -12,7 +12,7 @@ class Forsida {
     for (let i = 0; i < flokkar.length; i++) {
       const flokkur = flokkar[i];
       const elem = this.createDiv(flokkur, myndb);
-      console.log("prentai");
+      console.log("prenta");
       this.Sida.appendChild(document.createTextNode(flokkur[i]));
     }
       // const elem = createDiv(flokkur, myndb);

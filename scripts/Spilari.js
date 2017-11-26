@@ -22,7 +22,6 @@ class Spilari {
   constructor() { // smiður
   // Upphafstilum breytur
     this.id = null;
-    this.url = ;//videos.json;
     this.videos = null;
     this.categories = null;
 
@@ -68,7 +67,7 @@ class Spilari {
 /*
 * Sýnir villuskilaboð
 * Birtir villuskilaboð sem koma fram í Forsida.js
-* 
+*
 */
   showError(e) {
 
@@ -96,7 +95,7 @@ class Spilari {
 * fall þar sem við hlöðum inn myndbandi
 * þurfum að nota JSON til að sækja gögn
 * græja villur fyrir 200/400
-* 
+*
 */
   load() {
 
@@ -144,8 +143,6 @@ function onVideo() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  if () {
     const p = new Player();
     p.load();
-  }
 });
