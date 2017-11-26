@@ -2,6 +2,7 @@ class Forsida {
 
   constructor() {
     this.Sida = document.querySelector('.content');
+    this.videos = null;
   }
 
   createVideos(data) {
