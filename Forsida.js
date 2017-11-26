@@ -36,7 +36,7 @@ class Forsida {
     }
   }
 
-/*  createVideo(video) {
+  createVideo(video) {
     const divContain = document.createElement('Div');
     const divVideo = document.createElement('Div');
     const divinfo = document.createElement('Div');
@@ -47,7 +47,7 @@ class Forsida {
     divVideo.appendChild(img);
     divContain.appendChild(divVideo);
     divFlokkur.appendChild(divContain);
-  }*/
+  }
 
   init(content) {
     this.Sida = content;
@@ -68,7 +68,6 @@ class Forsida {
     const hours = Math.floor(d / (60 * 60));
     d %= (60 * 60);
 
-    //Bæta við eintölu.. krafa um það
     if(years > 1){
       if(this.lastNumber(years) === 1){
         return 'Fyrir ${years} ári'
@@ -93,12 +92,10 @@ class Forsida {
       }
       return 'Fyrir ${days} dögum';
     }
-    if(hours > 1){
-      if(this.lastNumber(hours) === 1){
-        return 'Fyrir ${hours} klukkutíma'
+    if(this.lastNumber(hours) === 1){
+      return 'Fyrir ${hours} klukkutíma'
       }
-      return 'Fyrir ${hours} klukkutímum';
-    }
+     return 'Fyrir ${hours} klukkutímum';
   }
 
   lastNumber(x){
