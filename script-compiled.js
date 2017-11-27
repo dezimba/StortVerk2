@@ -10,7 +10,7 @@ var Forsida = function () {
 
     this.Sida = document.querySelector('.content');
     // this.videos = null;
-    this.divFlokkur = null;
+    this.divFlokkur = document.createElement('div');
     this.id = null;
     this.video = null;
   }
@@ -48,7 +48,7 @@ var Forsida = function () {
         var video = myndb.find(function (v) {
           return v.id === id;
         });
-        _this.createVideo(video, id);
+        _this.createVideo(video);
         console.log(id);
       };
 
@@ -58,13 +58,14 @@ var Forsida = function () {
     }
   }, {
     key: 'createVideo',
-    value: function createVideo(video, id) {
+    value: function createVideo(video) {
       var divContain = document.createElement('div');
       var divVideo = document.createElement('div');
       var divInfo = document.createElement('div');
 
       var img = document.createElement('img');
       img.src = video.poster;
+      divVideo.appendChild(img);
 
       var Date = this.getDate(video.created);
       var d = document.createTextNode(Date);
@@ -78,10 +79,10 @@ var Forsida = function () {
       console.log(t);
       console.log(d);
 
-      // divVideo.appendChild(img);
-      // divContain.appendChild(divVideo);
+      divContain.appendChild(divVideo);
       divContain.appendChild(divInfo);
       this.divFlokkur.appendChild(divContain);
+      this.Sida.appendChild(this.divFlokkur);
     }
   }, {
     key: 'init',

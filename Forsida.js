@@ -2,7 +2,7 @@ class Forsida {
   constructor() {
     this.Sida = document.querySelector('.content');
     // this.videos = null;
-    this.divFlokkur = null;
+    this.divFlokkur = document.createElement('div');
     this.id = null;
     this.video = null;
   }
@@ -33,18 +33,19 @@ class Forsida {
     for (let i = 0; i < flokkur.videos.length; i += 1) {
       const id = flokkur.videos[i];
       const video = myndb.find(v => v.id === id);
-      this.createVideo(video, id);
+      this.createVideo(video);
       console.log(id);
     }
   }
 
-  createVideo(video, id) {
+  createVideo(video) {
     const divContain = document.createElement('div');
     const divVideo = document.createElement('div');
     const divInfo = document.createElement('div');
 
     const img = document.createElement('img');
     img.src = video.poster;
+    divVideo.appendChild(img);
 
     const Date = this.getDate(video.created);
     const d = document.createTextNode(Date);
@@ -59,10 +60,10 @@ class Forsida {
     console.log(t);
     console.log(d);
 
-    // divVideo.appendChild(img);
-    // divContain.appendChild(divVideo);
+    divContain.appendChild(divVideo);
     divContain.appendChild(divInfo);
     this.divFlokkur.appendChild(divContain);
+    this.Sida.appendChild(this.divFlokkur);
   }
 
   init(content) {
