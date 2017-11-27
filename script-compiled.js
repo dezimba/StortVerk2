@@ -9,7 +9,10 @@ var Forsida = function () {
     _classCallCheck(this, Forsida);
 
     this.Sida = document.querySelector('.content');
-    //this.videos = null;
+    // this.videos = null;
+    this.divFlokkur = null;
+    this.id = null;
+    this.video = null;
   }
 
   _createClass(Forsida, [{
@@ -18,11 +21,10 @@ var Forsida = function () {
       var flokkar = data.categories;
       var myndb = data.videos;
 
-      for (var i = 0; i < flokkar.length; i++) {
+      for (var i = 0; i < flokkar.length; i += 1) {
         var flokkur = flokkar[i];
-        var elem = this.createDiv(flokkur, myndb);
-        console.log("prenta");
-        this.Sida.appendChild(document.createTextNode(flokkur[i]));
+        this.createDiv(flokkur, myndb);
+        console.log('prenta');
       }
       // const elem = createDiv(flokkur, myndb);
     }
@@ -31,39 +33,55 @@ var Forsida = function () {
     value: function createDiv(flokkur, myndb) {
       var _this = this;
 
-      var divFlokkur = document.createElement('Div');
+      var divFlokkur = document.createElement('div');
       var Titill = document.createElement('H3');
       var t = flokkur.title;
+      console.log(flokkur.title);
       var title = document.createTextNode(t);
 
       Titill.appendChild(title);
       divFlokkur.appendChild(Titill);
+      this.Sida.appendChild(divFlokkur);
 
       var _loop = function _loop(i) {
         var id = flokkur.videos[i];
         var video = myndb.find(function (v) {
           return v.id === id;
         });
-        var elem = _this.createVideo(video);
+        _this.createVideo(video, id);
+        console.log(id);
       };
 
-      for (var i = 0; i < flokkur.videos.length; i++) {
+      for (var i = 0; i < flokkur.videos.length; i += 1) {
         _loop(i);
       }
     }
   }, {
     key: 'createVideo',
-    value: function createVideo(video) {
-      var divContain = document.createElement('Div');
-      var divVideo = document.createElement('Div');
-      var divinfo = document.createElement('Div');
+    value: function createVideo(video, id) {
+      var divContain = document.createElement('div');
+      var divVideo = document.createElement('div');
+      var divInfo = document.createElement('div');
 
       var img = document.createElement('img');
       img.src = video.poster;
 
-      divVideo.appendChild(img);
-      divContain.appendChild(divVideo);
-      divFlokkur.appendChild(divContain);
+      var Date = this.getDate(video.created);
+      var d = document.createTextNode(Date);
+      divInfo.appendChild(d);
+
+      var title = document.createElement('H4');
+      var t = document.createTextNode(video.title);
+      title.appendChild(t);
+      divInfo.appendChild(title);
+
+      console.log(t);
+      console.log(d);
+
+      // divVideo.appendChild(img);
+      // divContain.appendChild(divVideo);
+      divContain.appendChild(divInfo);
+      this.divFlokkur.appendChild(divContain);
     }
   }, {
     key: 'init',
@@ -87,37 +105,35 @@ var Forsida = function () {
       var hours = Math.floor(d / (60 * 60));
       d %= 60 * 60;
 
-      //Bæta við eintölu.. krafa um það
+      // Bæta við eintölu.. krafa um það
       if (years > 1) {
         if (this.lastNumber(years) === 1) {
-          return 'Fyrir ${years} ári';
+          return 'Fyrir ' + years + ' \xE1ri';
         }
-        return 'Fyrir ${years} árum';
+        return 'Fyrir ' + years + ' \xE1rum';
       }
       if (months > 1) {
         if (this.lastNumber(months) === 1) {
-          return 'Fyrir ${months} mánuði';
+          return 'Fyrir ' + months + ' m\xE1nu\xF0i';
         }
-        return 'Fyrir ${months} mánuðum';
+        return 'Fyrir ' + months + ' m\xE1nu\xF0um';
       }
       if (weeks > 1) {
         if (this.lastNumber(weeks) === 1) {
-          return 'Fyrir ${weeks} viku';
+          return 'Fyrir ' + weeks + ' viku';
         }
-        return 'Fyrir ${weeks} vikum';
+        return 'Fyrir ' + weeks + ' vikum';
       }
       if (days > 1) {
         if (this.lastNumber(days) === 1) {
-          return 'Fyrir ${days} degi';
+          return 'Fyrir ' + days + ' degi';
         }
-        return 'Fyrir ${days} dögum';
+        return 'Fyrir ' + days + ' d\xF6gum';
       }
-      if (hours > 1) {
-        if (this.lastNumber(hours) === 1) {
-          return 'Fyrir ${hours} klukkutíma';
-        }
-        return 'Fyrir ${hours} klukkutímum';
+      if (this.lastNumber(hours) === 1) {
+        return 'Fyrir ' + hours + ' klukkut\xEDma';
       }
+      return 'Fyrir ' + hours + ' klukkut\xEDmum';
     }
   }, {
     key: 'lastNumber',
@@ -131,7 +147,7 @@ var Forsida = function () {
     value: function fetchJSON() {
       var _this2 = this;
 
-      //const videos = ('videos.json');
+      // const videos = ('videos.json');
       var request = new XMLHttpRequest();
       request.overrideMimeType('application/json');
       request.open('GET', 'videos.json', true);
@@ -150,11 +166,6 @@ var Forsida = function () {
 
       request.send();
     }
-
-    /*  return {
-        init
-      }  */
-
   }]);
 
   return Forsida;

@@ -3,6 +3,8 @@ class Forsida {
     this.Sida = document.querySelector('.content');
     // this.videos = null;
     this.divFlokkur = null;
+    this.id = null;
+    this.video = null;
   }
 
   createVideos(data) {
@@ -11,7 +13,7 @@ class Forsida {
 
     for (let i = 0; i < flokkar.length; i += 1) {
       const flokkur = flokkar[i];
-      const elem = this.createDiv(flokkur, myndb);
+      this.createDiv(flokkur, myndb);
       console.log('prenta');
     }
   // const elem = createDiv(flokkur, myndb);
@@ -31,8 +33,8 @@ class Forsida {
     for (let i = 0; i < flokkur.videos.length; i += 1) {
       const id = flokkur.videos[i];
       const video = myndb.find(v => v.id === id);
-      // const elem = this.createVideo(video);
-      console.log('prenta2');
+      this.createVideo(video, id);
+      console.log(id);
     }
   }
 
@@ -42,20 +44,24 @@ class Forsida {
     const divInfo = document.createElement('div');
 
     const img = document.createElement('img');
-    img.src = this.video[id].poster;
+    img.src = video.poster;
 
     const Date = this.getDate(video.created);
-    console.log(Date);
+    const d = document.createTextNode(Date);
+    divInfo.appendChild(d);
+
 
     const title = document.createElement('H4');
     const t = document.createTextNode(video.title);
     title.appendChild(t);
     divInfo.appendChild(title);
 
-    console.log(video.title);
+    console.log(t);
+    console.log(d);
 
-    divVideo.appendChild(img);
-    divContain.appendChild(divVideo);
+    // divVideo.appendChild(img);
+    // divContain.appendChild(divVideo);
+    divContain.appendChild(divInfo);
     this.divFlokkur.appendChild(divContain);
   }
 
