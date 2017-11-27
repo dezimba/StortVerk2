@@ -48,7 +48,8 @@ var Forsida = function () {
         var video = myndb.find(function (v) {
           return v.id === id;
         });
-        _this.createVideo(video);
+        var videoElement = _this.createVideo(video);
+        divFlokkur.appendChild(videoElement);
         console.log(id);
       };
 
@@ -81,8 +82,9 @@ var Forsida = function () {
 
       divContain.appendChild(divVideo);
       divContain.appendChild(divInfo);
-      this.divFlokkur.appendChild(divContain);
-      this.Sida.appendChild(this.divFlokkur);
+      return divContain;
+      // this.divFlokkur.appendChild(divContain);
+      // this.Sida.appendChild(this.divFlokkur);
     }
   }, {
     key: 'init',

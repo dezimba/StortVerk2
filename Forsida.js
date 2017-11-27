@@ -33,7 +33,8 @@ class Forsida {
     for (let i = 0; i < flokkur.videos.length; i += 1) {
       const id = flokkur.videos[i];
       const video = myndb.find(v => v.id === id);
-      this.createVideo(video);
+      const videoElement = this.createVideo(video);
+      divFlokkur.appendChild(videoElement);
       console.log(id);
     }
   }
@@ -62,8 +63,9 @@ class Forsida {
 
     divContain.appendChild(divVideo);
     divContain.appendChild(divInfo);
-    this.divFlokkur.appendChild(divContain);
-    this.Sida.appendChild(this.divFlokkur);
+    return divContain;
+    // this.divFlokkur.appendChild(divContain);
+    // this.Sida.appendChild(this.divFlokkur);
   }
 
   init(content) {
