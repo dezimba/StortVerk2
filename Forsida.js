@@ -43,10 +43,15 @@ class Forsida {
     const divContain = document.createElement('div');
     const divVideo = document.createElement('div');
     const divInfo = document.createElement('div');
+    const duration = document.createElement('div');
 
     const img = document.createElement('img');
     img.src = video.poster;
     divVideo.appendChild(img);
+
+    const spilat = document.createTextNode(video.duration);
+    duration.appendChild(spilat);
+    divVideo.appendChild(duration);
 
     const Date = this.getDate(video.created);
     const d = document.createTextNode(Date);

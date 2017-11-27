@@ -63,10 +63,15 @@ var Forsida = function () {
       var divContain = document.createElement('div');
       var divVideo = document.createElement('div');
       var divInfo = document.createElement('div');
+      var duration = document.createElement('div');
 
       var img = document.createElement('img');
       img.src = video.poster;
       divVideo.appendChild(img);
+
+      var spilat = document.createTextNode(video.duration);
+      duration.appendChild(spilat);
+      divVideo.appendChild(duration);
 
       var Date = this.getDate(video.created);
       var d = document.createTextNode(Date);
