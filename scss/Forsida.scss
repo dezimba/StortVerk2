@@ -1,21 +1,27 @@
 .mainForsida {
 
   .mainHead{
-    font-size: 48px;
+    font-size: 3em;
     margin-top: $gutter;
     margin-bottom: $gutter;
   }
 
   .catTitle {
-    font-size: 32px;
+    display: flex;
+    font-size: 2em;
     margin-top: $gutter*2;
     margin-bottom: $gutter;
   }
 
   .catContent {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+     display: flex;
+     justify-content: space-between;
+     flex-wrap: wrap;
+     // div + div {
+       // padding: 0 $gutter;
+     // }
+    // flex-direction: row;
+    // flex-wrap: wrap;
   }
 
   .catStructure {
@@ -24,7 +30,7 @@
     padding-bottom: $gutter*2;
     display: flex;
     flex-direction: row;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
   }
 
   .vidMain {
@@ -33,10 +39,18 @@
     }
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    width: 100%;
-    margin-right: $gutter;
-    margin-left: $gutter;
+    // justify-content: space-around;
+    line-height: 2;
+    flex-wrap: wrap;
+    width: 50%;
+    //padding-right: $gutter;
+    //padding-left: $gutter;
+    img {
+    }
+  }
+
+  .h4 {
     font-weight: bold;
+    font-size: 1.2em;
   }
 }
