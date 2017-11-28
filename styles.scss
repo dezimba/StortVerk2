@@ -33,9 +33,11 @@ h1, h2, h3, h4, { /* stylelint-disable-line */
 
 
 main { /* stylelint-disable-line */
+  display: flex;
+  width: 100%;
   max-width: 1000px;
   margin: 0 auto;
-
+  flex-direction: column;
   @media (max-width: 500px) {
     margin-right: $gutter;
     margin-left: $gutter;

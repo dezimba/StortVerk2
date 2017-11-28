@@ -101,7 +101,7 @@ class Forsida {
       }
       return `${min}:${sec}`;
     } else if (x >= 60 * 60) {
-      const hour = Math.floor(x / (60 / 60));
+      const hour = Math.floor(x / (60 * 60));
       const min = Math.floor(x / 60);
       const sec = Math.floor(x % 60);
       return `${hour}:${min}:${sec}`;
