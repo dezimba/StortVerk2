@@ -93,18 +93,13 @@ class Forsida {
         return `00:0${x}`;
       }
       return `00:${x}`;
-    } else if (x < 60 * 60) {
+    } else if (x <= 60 * 60) {
       const min = Math.floor(x / 60);
       const sec = Math.floor(x % 60);
       if (sec < 10) {
         return `${min}:0${sec}`;
       }
       return `${min}:${sec}`;
-    } else if (x >= 60 * 60) {
-      const hour = Math.floor(x / (60 * 60));
-      const min = Math.floor(x / 60);
-      const sec = Math.floor(x % 60);
-      return `${hour}:${min}:${sec}`;
     }
   }
 
