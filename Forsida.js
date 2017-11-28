@@ -151,7 +151,7 @@ class Forsida {
     return `Fyrir ${hours} klukkutímum`;
   }
 
-  //Taka seinastu töluna, þurfum það fyrir eintölu í getDate()
+  //Taka seinastu töluna, þurfum það fyrir eintölu í getDate
   lastNumber(x) {
     let str = x.toString();
     str = str.slice(-1);
