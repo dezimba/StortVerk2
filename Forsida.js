@@ -57,6 +57,7 @@ class Forsida {
     const st = document.createTextNode(spilat);
     duration.appendChild(st);
     divVideo.appendChild(duration);
+    duration.classList.add('durationText');
 
     const title = document.createElement('H4');
     const t = document.createTextNode(video.title);
