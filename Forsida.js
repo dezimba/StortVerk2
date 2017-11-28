@@ -33,6 +33,7 @@ class Forsida {
     divTitill.appendChild(Titill);
     divFlokkur.appendChild(divTitill);
     divFlokkur.appendChild(divEfni);
+    divEfni.classList.add('catContent');
     divFlokkur.classList.add('catStructure');
     this.Sida.appendChild(divFlokkur);
 
