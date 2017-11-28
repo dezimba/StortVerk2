@@ -1,19 +1,3 @@
-/*
-*var Spilaris = (function() {
-*
-*  function init() {
-*    nr = form.querySelector('#number');
-*    texti = results;
-*
-*    form.addEventListener('submit', findCar);
-*  }
-*
-*  return {
-*    init: init
-*  }
-*})();
-*/
-
 class Spilari {
 /*
 * í smiðnum upphafsstillum við breytur
@@ -28,7 +12,7 @@ class Spilari {
     this.isPlaying = false;
     this.ismute = false;
 
-    /* upphafstillum takka
+    // upphafstillum takka
     this.playButton = document.querySelector('.playButton');
     this.muteButton = document.querySelector('.muteButton');
     this.fullscreenButton = document.querySelector('.fullscreenButton');
@@ -41,7 +25,7 @@ class Spilari {
     this.muteTakki.addEventListener('click', this.mute.bind(this));
     this.fullscreenTakki.addEventListener('click', this.fullscreen.bind(this));
     this.forwardTakki.addEventListener('click', this.forward.bind(this));
-    this.backwardsTakki.addEventlistener('click', this.backward.bind(this));*/
+    this.backwardsTakki.addEventlistener('click', this.backward.bind(this));
   }
 
   play() {
@@ -166,7 +150,9 @@ function onVideo() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  const p = new Spilari();
-  // p.load();
-  this.fetchJSON();
+  const content = document.querySelector('.mainSpilari');
+  const Spilari = new Spilari();
+
+  Spilari.fetchJSON();
+  Spilari.play();
 });
