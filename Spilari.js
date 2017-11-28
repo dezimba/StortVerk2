@@ -28,20 +28,24 @@ class Spilari {
     this.isPlaying = false;
     this.ismute = false;
 
-  // upphafstillum takka
-    this.playTakki = document.querySelector('.playTakki');
-    this.muteTakki = document.querySelector('.muteTakki');
-    this.fullscreenTakki = document.querySelector('.fullscreenTakki');
-    this.forwardTakki = document.querySelector('.forwardTakki');
-    this.backwardsTakki = document.querySelector('.backwardsTakki');
-    this.container = document.querySelector('.vidContainer')
+    /* upphafstillum takka
+    this.playButton = document.querySelector('.playButton');
+    this.muteButton = document.querySelector('.muteButton');
+    this.fullscreenButton = document.querySelector('.fullscreenButton');
+    this.forwardButton = document.querySelector('.forwardButton');
+    this.backwardsButton = document.querySelector('.backwardsButton');
+    this.playOverlay = document.querySelector('.vidPlayer')
 
   // Bætum við eventListener á alla takkana
     this.playTakki.addEventListener('click', this.play.bind(this));
     this.muteTakki.addEventListener('click', this.mute.bind(this));
     this.fullscreenTakki.addEventListener('click', this.fullscreen.bind(this));
     this.forwardTakki.addEventListener('click', this.forward.bind(this));
-    this.backwardsTakki.addEventlistener('click', this.backward.bind(this));
+    this.backwardsTakki.addEventlistener('click', this.backward.bind(this));*/
+  }
+
+  play() {
+
   }
 
 /*
@@ -97,9 +101,28 @@ class Spilari {
 * græja villur fyrir 200/400
 *
 */
-  load() {
+  fetchJSON() {
+    const request = new XMLHttpRequest();
+    request.overrideMimeType('application/json');
+    request.open('GET', 'videos.json', true);
+    console.log(request);
+    request.onload = () => {
+      if (request.status >= 200 && request.status < 400) {
+        const data = JSON.parse(request.response);
+        console.log(data);
+        this.createVideos(data);
+      } else if (request.status >= 400) {
+        // villu melding
+      }
+    };
 
+    request.onerror = () => {
+
+    };
+
+    request.send();
   }
+
 
 /*
 * Athugum hvort sé verið að spila myndband
@@ -143,6 +166,7 @@ function onVideo() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    const p = new Player();
-    p.load();
+  const p = new Spilari();
+  // p.load();
+  this.fetchJSON();
 });

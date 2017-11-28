@@ -14,7 +14,6 @@ class Forsida {
     for (let i = 0; i < flokkar.length; i += 1) {
       const flokkur = flokkar[i];
       this.createDiv(flokkur, myndb);
-      console.log('prenta');
     }
   // const elem = createDiv(flokkur, myndb);
   }
@@ -25,7 +24,6 @@ class Forsida {
     const divFlokkur = document.createElement('div');
     const Titill = document.createElement('H3');
     const t = flokkur.title;
-    console.log(flokkur.title);
     const title = document.createTextNode(t);
 
     Titill.appendChild(title);
@@ -42,7 +40,6 @@ class Forsida {
       const video = myndb.find(v => v.id === id);
       const videoElement = this.createVideo(video);
       divEfni.appendChild(videoElement);
-      console.log(id);
     }
   }
 
@@ -71,11 +68,14 @@ class Forsida {
     const d = document.createTextNode(Date);
     divInfo.appendChild(d);
 
-    console.log(t);
-    console.log(d);
+    const link = document.createElement('a');
+    link.setAttribute('href', `video.html?id=${video.id}`);
+    console.log(video.id);
+
 
     divContain.appendChild(divVideo);
     divContain.appendChild(divInfo);
+    divContain.appendChild(link);
     divContain.classList.add('vidMain');
     return divContain;
     // this.divFlokkur.appendChild(divContain);
@@ -163,11 +163,11 @@ class Forsida {
     const request = new XMLHttpRequest();
     request.overrideMimeType('application/json');
     request.open('GET', 'videos.json', true);
-    console.log(request);
+    // console.log(request);
     request.onload = () => {
       if (request.status >= 200 && request.status < 400) {
         const data = JSON.parse(request.response);
-        console.log(data);
+        // console.log(data);
         this.createVideos(data);
       } else if (request.status >= 400) {
         // villu melding
