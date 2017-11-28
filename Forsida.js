@@ -69,7 +69,9 @@ class Forsida {
     divInfo.appendChild(d);
 
     const link = document.createElement('a');
-    link.setAttribute('href', `video.html?id=${video.id}`);
+    const a = window.location.href;
+    const href = document.createTextNode(a);
+    link.setAttribute('href', `${href}Spilari.html?id=${video.id}`);
     console.log(video.id);
 
 
@@ -88,7 +90,7 @@ class Forsida {
   // content.addEventListener('click', ); // fallið sem ræsir queryselector
   }
 
-  //Fall sem tekur tíma myndbands frá json og skilar tímanum í réttu formatti
+  // Fall sem tekur tíma myndbands frá json og skilar tímanum í réttu formatti
   getDuration(x) {
     if (x < 60) {
       if (x < 10) {
