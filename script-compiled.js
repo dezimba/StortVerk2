@@ -24,7 +24,6 @@ var Forsida = function () {
       for (var i = 0; i < flokkar.length; i += 1) {
         var flokkur = flokkar[i];
         this.createDiv(flokkur, myndb);
-        console.log('prenta');
       }
       // const elem = createDiv(flokkur, myndb);
     }
@@ -38,7 +37,6 @@ var Forsida = function () {
       var divFlokkur = document.createElement('div');
       var Titill = document.createElement('H3');
       var t = flokkur.title;
-      console.log(flokkur.title);
       var title = document.createTextNode(t);
 
       Titill.appendChild(title);
@@ -57,7 +55,6 @@ var Forsida = function () {
         });
         var videoElement = _this.createVideo(video);
         divEfni.appendChild(videoElement);
-        console.log(id);
       };
 
       for (var i = 0; i < flokkur.videos.length; i += 1) {
@@ -91,11 +88,13 @@ var Forsida = function () {
       var d = document.createTextNode(Date);
       divInfo.appendChild(d);
 
-      console.log(t);
-      console.log(d);
+      var link = document.createElement('a');
+      link.setAttribute('href', 'video.html?id=' + video.id);
+      console.log(video.id);
 
       divContain.appendChild(divVideo);
       divContain.appendChild(divInfo);
+      divContain.appendChild(link);
       divContain.classList.add('vidMain');
       return divContain;
       // this.divFlokkur.appendChild(divContain);
@@ -186,11 +185,11 @@ var Forsida = function () {
       var request = new XMLHttpRequest();
       request.overrideMimeType('application/json');
       request.open('GET', 'videos.json', true);
-      console.log(request);
+      // console.log(request);
       request.onload = function () {
         if (request.status >= 200 && request.status < 400) {
           var data = JSON.parse(request.response);
-          console.log(data);
+          // console.log(data);
           _this2.createVideos(data);
         } else if (request.status >= 400) {
           // villu melding
