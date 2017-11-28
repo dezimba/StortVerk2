@@ -61,15 +61,14 @@ class Forsida {
     duration.appendChild(st);
     divVideo.appendChild(duration);
 
-    const Date = this.getDate(video.created);
-    const d = document.createTextNode(Date);
-    divInfo.appendChild(d);
-
-
     const title = document.createElement('H4');
     const t = document.createTextNode(video.title);
     title.appendChild(t);
     divInfo.appendChild(title);
+
+    const Date = this.getDate(video.created);
+    const d = document.createTextNode(Date);
+    divInfo.appendChild(d);
 
     console.log(t);
     console.log(d);

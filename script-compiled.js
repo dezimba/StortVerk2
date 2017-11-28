@@ -81,14 +81,14 @@ var Forsida = function () {
       duration.appendChild(st);
       divVideo.appendChild(duration);
 
-      var Date = this.getDate(video.created);
-      var d = document.createTextNode(Date);
-      divInfo.appendChild(d);
-
       var title = document.createElement('H4');
       var t = document.createTextNode(video.title);
       title.appendChild(t);
       divInfo.appendChild(title);
+
+      var Date = this.getDate(video.created);
+      var d = document.createTextNode(Date);
+      divInfo.appendChild(d);
 
       console.log(t);
       console.log(d);
