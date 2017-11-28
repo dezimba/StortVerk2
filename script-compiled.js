@@ -89,7 +89,9 @@ var Forsida = function () {
       divInfo.appendChild(d);
 
       var link = document.createElement('a');
-      link.setAttribute('href', 'video.html?id=' + video.id);
+      var a = window.location.href;
+      var href = document.createTextNode(a);
+      link.setAttribute('href', href + 'Spilari.html?id=' + video.id);
       console.log(video.id);
 
       divContain.appendChild(divVideo);
@@ -107,6 +109,9 @@ var Forsida = function () {
 
       // content.addEventListener('click', ); // fallið sem ræsir queryselector
     }
+
+    // Fall sem tekur tíma myndbands frá json og skilar tímanum í réttu formatti
+
   }, {
     key: 'getDuration',
     value: function getDuration(x) {
@@ -124,6 +129,9 @@ var Forsida = function () {
         return min + ':' + sec;
       }
     }
+
+    //Fall sem tekur dagsetningu frá json og skilar aldrinum á réttu formatti
+
   }, {
     key: 'getDate',
     value: function getDate(x) {
@@ -139,7 +147,7 @@ var Forsida = function () {
       var hours = Math.floor(d / (60 * 60));
       d %= 60 * 60;
 
-      // Bæta við eintölu.. krafa um það
+      //Skila á réttu formatti
       if (years > 1) {
         if (this.lastNumber(years) === 1) {
           return 'Fyrir ' + years + ' \xE1ri';
@@ -169,6 +177,9 @@ var Forsida = function () {
       }
       return 'Fyrir ' + hours + ' klukkut\xEDmum';
     }
+
+    //Taka seinastu töluna, þurfum það fyrir eintölu í getDate()
+
   }, {
     key: 'lastNumber',
     value: function lastNumber(x) {
