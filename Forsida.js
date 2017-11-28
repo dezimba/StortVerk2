@@ -88,6 +88,7 @@ class Forsida {
   // content.addEventListener('click', ); // fallið sem ræsir queryselector
   }
 
+  //Fall sem tekur tíma myndbands frá json og skilar tímanum í réttu formatti
   getDuration(x) {
     if (x < 60) {
       if (x < 10) {
@@ -104,6 +105,7 @@ class Forsida {
     }
   }
 
+  //Fall sem tekur dagsetningu frá json og skilar aldrinum á réttu formatti
   getDate(x) {
     let d = (Date.now() - x) / 1000;
     const years = Math.floor(d / (365 * 24 * 60 * 60));
@@ -118,7 +120,7 @@ class Forsida {
     d %= (60 * 60);
 
 
-    // Bæta við eintölu.. krafa um það
+    //Skila á réttu formatti
     if (years > 1) {
       if (this.lastNumber(years) === 1) {
         return `Fyrir ${years} ári`;
@@ -149,6 +151,7 @@ class Forsida {
     return `Fyrir ${hours} klukkutímum`;
   }
 
+  //Taka seinastu töluna, þurfum það fyrir eintölu í getDate()
   lastNumber(x) {
     let str = x.toString();
     str = str.slice(-1);
