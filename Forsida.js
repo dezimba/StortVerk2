@@ -57,6 +57,7 @@ class Forsida {
     const st = document.createTextNode(spilat);
     duration.appendChild(st);
     divVideo.appendChild(duration);
+    duration.classList.add('durationText');
 
     const title = document.createElement('H4');
     const t = document.createTextNode(video.title);
@@ -154,7 +155,7 @@ class Forsida {
     return `Fyrir ${hours} klukkutímum`;
   }
 
-  //Taka seinastu töluna, þurfum það fyrir eintölu í getDate()
+  //Taka seinastu töluna, þurfum það fyrir eintölu í getDate
   lastNumber(x) {
     let str = x.toString();
     str = str.slice(-1);
