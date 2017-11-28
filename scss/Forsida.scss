@@ -14,8 +14,8 @@
 
   .catContent {
     display: flex;
-    flex-direction: row;
-   flex-wrap: wrap;
+    // flex-direction: row;
+    // flex-wrap: wrap;
   }
 
   .catStructure {
@@ -27,6 +27,8 @@
   }
 
   .vidMain {
+    display: flex;
+    justify-content: space-between;
     width: 50%;
     margin-right: $gutter;
     margin-left: $gutter;
