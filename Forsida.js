@@ -20,7 +20,7 @@ class Forsida {
   }
 
   createDiv(flokkur, myndb) {
-    const divtitill = document.createElement('div');
+    const divTitill = document.createElement('div');
     const divEfni = document.createElement('div');
     const divFlokkur = document.createElement('div');
     const Titill = document.createElement('H3');
@@ -30,8 +30,8 @@ class Forsida {
 
     Titill.appendChild(title);
     Titill.classList.add('catTitle');
-    divtitill.appendChild(Titill);
-    divFlokkur.appendChild(Titill);
+    divTitill.appendChild(Titill);
+    divFlokkur.appendChild(divTitill);
     divFlokkur.appendChild(divEfni);
     divFlokkur.classList.add('catStructure');
     this.Sida.appendChild(divFlokkur);

@@ -33,7 +33,7 @@ var Forsida = function () {
     value: function createDiv(flokkur, myndb) {
       var _this = this;
 
-      var divtitill = document.createElement('div');
+      var divTitill = document.createElement('div');
       var divEfni = document.createElement('div');
       var divFlokkur = document.createElement('div');
       var Titill = document.createElement('H3');
@@ -43,8 +43,8 @@ var Forsida = function () {
 
       Titill.appendChild(title);
       Titill.classList.add('catTitle');
-      divtitill.appendChild(Titill);
-      divFlokkur.appendChild(Titill);
+      divTitill.appendChild(Titill);
+      divFlokkur.appendChild(divTitill);
       divFlokkur.appendChild(divEfni);
       divFlokkur.classList.add('catStructure');
       this.Sida.appendChild(divFlokkur);
@@ -114,18 +114,13 @@ var Forsida = function () {
           return '00:0' + x;
         }
         return '00:' + x;
-      } else if (x < 60 * 60) {
+      } else if (x <= 60 * 60) {
         var min = Math.floor(x / 60);
         var sec = Math.floor(x % 60);
         if (sec < 10) {
           return min + ':0' + sec;
         }
         return min + ':' + sec;
-      } else if (x >= 60 * 60) {
-        var hour = Math.floor(x / (60 / 60));
-        var _min = Math.floor(x / 60);
-        var _sec = Math.floor(x % 60);
-        return hour + ':' + _min + ':' + _sec;
       }
     }
   }, {
