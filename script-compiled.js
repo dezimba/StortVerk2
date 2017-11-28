@@ -33,6 +33,8 @@ var Forsida = function () {
     value: function createDiv(flokkur, myndb) {
       var _this = this;
 
+      var divtitill = document.createElement('div');
+      var divEfni = document.createElement('div');
       var divFlokkur = document.createElement('div');
       var Titill = document.createElement('H3');
       var t = flokkur.title;
@@ -40,7 +42,11 @@ var Forsida = function () {
       var title = document.createTextNode(t);
 
       Titill.appendChild(title);
+      Titill.classList.add('catTitle');
+      divtitill.appendChild(Titill);
       divFlokkur.appendChild(Titill);
+      divFlokkur.appendChild(divEfni);
+      divFlokkur.classList.add('catStructure');
       this.Sida.appendChild(divFlokkur);
 
       var _loop = function _loop(i) {
@@ -49,7 +55,7 @@ var Forsida = function () {
           return v.id === id;
         });
         var videoElement = _this.createVideo(video);
-        divFlokkur.appendChild(videoElement);
+        divEfni.appendChild(videoElement);
         console.log(id);
       };
 
@@ -69,8 +75,9 @@ var Forsida = function () {
       img.src = video.poster;
       divVideo.appendChild(img);
 
-      var spilat = document.createTextNode(video.duration);
-      duration.appendChild(spilat);
+      var spilat = this.getDuration(video.duration); // Kalla á fallið
+      var st = document.createTextNode(spilat);
+      duration.appendChild(st);
       divVideo.appendChild(duration);
 
       var Date = this.getDate(video.created);
@@ -87,6 +94,7 @@ var Forsida = function () {
 
       divContain.appendChild(divVideo);
       divContain.appendChild(divInfo);
+      divContain.classList.add('vidMain');
       return divContain;
       // this.divFlokkur.appendChild(divContain);
       // this.Sida.appendChild(this.divFlokkur);
@@ -97,6 +105,28 @@ var Forsida = function () {
       this.Sida = content;
 
       // content.addEventListener('click', ); // fallið sem ræsir queryselector
+    }
+  }, {
+    key: 'getDuration',
+    value: function getDuration(x) {
+      if (x < 60) {
+        if (x < 10) {
+          return '00:0' + x;
+        }
+        return '00:' + x;
+      } else if (x < 60 * 60) {
+        var min = Math.floor(x / 60);
+        var sec = Math.floor(x % 60);
+        if (sec < 10) {
+          return min + ':0' + sec;
+        }
+        return min + ':' + sec;
+      } else if (x >= 60 * 60) {
+        var hour = Math.floor(x / (60 / 60));
+        var _min = Math.floor(x / 60);
+        var _sec = Math.floor(x % 60);
+        return hour + ':' + _min + ':' + _sec;
+      }
     }
   }, {
     key: 'getDate',

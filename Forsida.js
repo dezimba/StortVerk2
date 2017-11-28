@@ -20,6 +20,8 @@ class Forsida {
   }
 
   createDiv(flokkur, myndb) {
+    const divtitill = document.createElement('div');
+    const divEfni = document.createElement('div');
     const divFlokkur = document.createElement('div');
     const Titill = document.createElement('H3');
     const t = flokkur.title;
@@ -27,14 +29,18 @@ class Forsida {
     const title = document.createTextNode(t);
 
     Titill.appendChild(title);
+    Titill.classList.add('catTitle');
+    divtitill.appendChild(Titill);
     divFlokkur.appendChild(Titill);
+    divFlokkur.appendChild(divEfni);
+    divFlokkur.classList.add('catStructure');
     this.Sida.appendChild(divFlokkur);
 
     for (let i = 0; i < flokkur.videos.length; i += 1) {
       const id = flokkur.videos[i];
       const video = myndb.find(v => v.id === id);
       const videoElement = this.createVideo(video);
-      divFlokkur.appendChild(videoElement);
+      divEfni.appendChild(videoElement);
       console.log(id);
     }
   }
@@ -49,8 +55,9 @@ class Forsida {
     img.src = video.poster;
     divVideo.appendChild(img);
 
-    const spilat = document.createTextNode(video.duration);
-    duration.appendChild(spilat);
+    const spilat = this.getDuration(video.duration); // Kalla á fallið
+    const st = document.createTextNode(spilat);
+    duration.appendChild(st);
     divVideo.appendChild(duration);
 
     const Date = this.getDate(video.created);
@@ -68,6 +75,7 @@ class Forsida {
 
     divContain.appendChild(divVideo);
     divContain.appendChild(divInfo);
+    divContain.classList.add('vidMain');
     return divContain;
     // this.divFlokkur.appendChild(divContain);
     // this.Sida.appendChild(this.divFlokkur);
@@ -77,6 +85,27 @@ class Forsida {
     this.Sida = content;
 
   // content.addEventListener('click', ); // fallið sem ræsir queryselector
+  }
+
+  getDuration(x) {
+    if (x < 60) {
+      if (x < 10) {
+        return `00:0${x}`;
+      }
+      return `00:${x}`;
+    } else if (x < 60 * 60) {
+      const min = Math.floor(x / 60);
+      const sec = Math.floor(x % 60);
+      if (sec < 10) {
+        return `${min}:0${sec}`;
+      }
+      return `${min}:${sec}`;
+    } else if (x >= 60 * 60) {
+      const hour = Math.floor(x / (60 / 60));
+      const min = Math.floor(x / 60);
+      const sec = Math.floor(x % 60);
+      return `${hour}:${min}:${sec}`;
+    }
   }
 
   getDate(x) {
