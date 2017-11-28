@@ -91,8 +91,9 @@ var Forsida = function () {
       var link = document.createElement('a');
       var a = window.location.href;
       var href = document.createTextNode(a);
-      link.setAttribute('href', href + 'Spilari.html?id=' + video.id);
+      link.setAttribute('href', href + '/Spilari.html?id=' + video.id);
       console.log(video.id);
+      console.log(href);
 
       divContain.appendChild(divVideo);
       divContain.appendChild(divInfo);
